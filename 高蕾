@@ -1,0 +1,36 @@
+#include <stdio.h>
+void main()
+{
+    char code[100];//设置一个数组，容量为100
+    char password[100];
+    char c_1,c_2;//设置两个字符
+    int i=0,j=0;//初始值
+    printf("请输入你要编码的原始密文(以英文句号结尾):");
+    while (c_1!='.')
+    {
+        i++;
+        j++;
+        code[i]=c_1;
+        scanf("%c",&c_1);
+        if((c_1<'v' && c_1>'a') || (c_1>'A' && c_1<'V')) //限制第1-19个字母
+        {
+            c_2=c_1+5;
+        }
+        else if ((c_1>='v' && c_1<='z') || (c_1>='V' && c_1<='Z'))//限制第20-24的字母
+        {
+            c_2=c_1-21;
+        }
+        else
+        {
+            password[j]=c_1; 
+            continue;
+        }
+        password[j]=c_2;
+    }
+    for (j=1;j<i;j++)
+    {
+        printf("%c",password[j]);//输出结果
+    }
+    printf(".");
+    printf("\n");
+}
